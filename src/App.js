@@ -4,7 +4,7 @@ import {HomePage, Error} from "./pages"
 import {Header} from './components';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient
 
 function App() {
   return (

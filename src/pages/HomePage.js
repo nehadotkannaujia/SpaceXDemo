@@ -1,20 +1,18 @@
 import React from 'react'
 import {useQuery} from "react-query"
+import useFetch from '../hooks/useFetch';
 
-async function fetchData(){
-  const data = await fetch("https://api.spacexdata.com/v4/company");
-  return data.json();
-}
+
 
 export default function HomePage() {
+  const apiFunction = "/company"
 
-const {data, status} = useQuery('companyData', fetchData)
-console.log(data);
+const {data, status} = useQuery(['companyData', apiFunction], useFetch)
 
   return (
     <section className="showcase">
     <div className='overlay p-5'>
-    {status === "loading" && <div>Loading....</div>} 
+    {status === "loading" && <div className="text-white text-4xl">Loading....</div>} 
     {status === "Error" && <div>Something went wrong please try again later</div>} 
     {status === "success" && ( <article>
         <h1 className='text-center heading flex justify-center capitalize my-6'>All the SpaceX data at one place </h1>

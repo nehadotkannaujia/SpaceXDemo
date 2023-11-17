@@ -1,8 +1,10 @@
-const BASE_URL = "https://api.spacexdata.com/v4/";
+const BASE_URL = "https://api.spacexdata.com/v4";
 
 
-export default async function useFetch(){
-    const data = await fetch( `${BASE_URL}/company`);
+ const useFetch = async ({queryKey}) => {
+    const [_, apiFunction] = queryKey
+    const data = await fetch( `${BASE_URL}${apiFunction}`);
     return data.json();
   }
   
+  export default useFetch
